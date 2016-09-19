@@ -111,6 +111,15 @@ es_start(struct output *out)
     if ((res = curl_easy_setopt(es->curl, CURLOPT_WRITEFUNCTION, es_write)) != CURLE_OK) {
         es_curl_error("es_config", "writefn", res, es->ebuf, 1);
     }
+    if ((res = curl_easy_setopt(es->curl, CURLOPT_TCP_KEEPALIVE, 1L)) != CURLE_OK) {
+        es_curl_error("es_config", "keepalive", res, es->ebuf, 1);
+    }
+    if ((res = curl_easy_setopt(es->curl, CURLOPT_TCP_KEEPIDLE, 300L)) != CURLE_OK) {
+        es_curl_error("es_config", "keepidle", res, es->ebuf, 1);
+    }
+    if ((res = curl_easy_setopt(es->curl, CURLOPT_TCP_KEEPINTVL, 60L)) != CURLE_OK) {
+        es_curl_error("es_config", "keepinterval", res, es->ebuf, 1);
+    }
     now = time(NULL);
     (void)gmtime_r(&now, &es->stamp);
     strftime(es->daybuf, sizeof(es->daybuf), "%Y%m%d", &es->stamp);
