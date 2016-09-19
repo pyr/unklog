@@ -1,11 +1,11 @@
 unklog: consume kafka log data
 ==============================
 
-Unklog is a lean log sink for Apache Kafka. It supports pulling logs from Kafka
+**Unklog** is a lean log sink for Apache Kafka. It supports pulling logs from Kafka
 and outputting them to either [elasticsearch](http://elastic.co) or a long
 running process, such as [multilog](https://cr.yp.to/daemontools/multilog.html).
 
-Unklog provides the following features:
+**Unklog** provides the following features:
 
 - Kafka 0.10.0 compatibility:
   - Balanced consumer with offset storage in kafka.
@@ -51,6 +51,18 @@ Connection closed by foreign host.
 
 ## Threading model
 
-Each unklog input and output gets its own thread. The main thread is
+Each **unklog** input and output gets its own thread. The main thread is
 used to install signal handlers, the statistic update thread and the
 asynchronous TCP server for statistics.
+
+## Building
+
+**unklog** requires the following libraries:
+
+- [librdkafka](https://github.com/edenhill/librdkafka)
+- [YAJL](http://lloyd.github.io/yajl/)
+- [libuv](https://github.com/libuv/libuv)
+- [libbsd](https://libbsd.freedesktop.org/wiki/)
+- [libcurl](https://curl.haxx.se/libcurl/)
+
+
