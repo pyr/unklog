@@ -40,6 +40,7 @@ output_pop(void *p)
     log_info("output_pop: starting worker thread for output %s", out->name);
 
     while (out->flags & OUTPUT_RUN) {
+        start = clock();
         uv_mutex_lock(&out->lock);
         while (STAILQ_EMPTY(&out->payloads) && (out->flags & OUTPUT_RUN)) {
             uv_cond_wait(&out->signal, &out->lock);
@@ -51,9 +52,7 @@ output_pop(void *p)
         payload = STAILQ_FIRST(&out->payloads);
         STAILQ_REMOVE_HEAD(&out->payloads, entry);
         uv_mutex_unlock(&out->lock);
-
         metric_inc(&out->count);
-        start = clock();
         if (out->impl->payload(out, payload->type, payload->buf, payload->len) != 0) {
             metric_inc(&out->errors);
             log_warn("output_pop: could not process payload");
