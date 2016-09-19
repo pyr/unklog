@@ -48,3 +48,9 @@ out.exec.lag 0
 out.exec.meter 11233 0 2 3 1 0 0 0 0 0 0 0 0 max:25
 Connection closed by foreign host.
 ```
+
+## Threading model
+
+Each unklog input and output gets its own thread. The main thread is
+used to install signal handlers, the statistic update thread and the
+asynchronous TCP server for statistics.
