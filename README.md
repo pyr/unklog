@@ -1,6 +1,8 @@
 unklog: consume kafka log data
 ==============================
 
+![unklog](http://i.imgur.com/I7Fr2Hy.jpg)
+
 **Unklog** is a lean log sink for Apache Kafka. It supports pulling logs from Kafka
 and outputting them to either [elasticsearch](http://elastic.co) or a long
 running process, such as [multilog](https://cr.yp.to/daemontools/multilog.html).
