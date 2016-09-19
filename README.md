@@ -29,8 +29,22 @@ output exec multilog n10 s16384 /var/log/unklog
 stats localhost 6789
 ```
 
+## Statistics
 
-
-
-
-
+```
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+global.uptime 1474286538
+global.count 11239
+in.kafka.count 11239
+out.es.count 10640
+out.es.errs 0
+out.es.lag 599
+out.es.meter 10635 0 1 1 2 0 0 0 0 0 0 0 0 max:35
+out.exec.count 11239
+out.exec.errs 0
+out.exec.lag 0
+out.exec.meter 11233 0 2 3 1 0 0 0 0 0 0 0 0 max:25
+Connection closed by foreign host.
+```
