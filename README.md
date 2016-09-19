@@ -65,4 +65,8 @@ asynchronous TCP server for statistics.
 - [libbsd](https://libbsd.freedesktop.org/wiki/)
 - [libcurl](https://curl.haxx.se/libcurl/)
 
+Once these are installed you can build by running:
 
+```
+$ make
+```
